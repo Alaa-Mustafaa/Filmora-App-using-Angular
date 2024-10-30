@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <!-- ========== Start First Section ( Hero Section ) ========== -->
+    <section id="first_section">
+      <div id="home-layer">
+              <!-- ========== Start Navigation bar Section ========== -->
+              <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                  <a class="navbar-brand fs-1 text-danger" routerLink="/home"
+                    >Filmora</a
+                  >
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto mb-2 mb-lg-0 pt-2">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link active  fs-5"
+                          aria-current="page"
+                          routerLink="/home" routerLinkActive="activee"
+                          >Home</a
+                        >
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a
+                          class="nav-link dropdown-toggle  fs-5"
+                          href="#"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false" routerLinkActive="activee"
+                        >
+                          Movies
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              routerLink="/categories/now_playing"
+                              >Now Playing</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" routerLink="/categories/popular"
+                              >Popular</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              routerLink="/categories/top_rated"
+                              >Top Rated</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" routerLink="/categories/upcoming"
+                              >Upcoming</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" routerLink="/categories/trending"
+                              >Trending</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+      
+                      <li class="nav-item dropdown">
+                        <a
+                          class="nav-link dropdown-toggle  fs-5"
+                          href="#"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          TV Series
+                        </a>
+                        <ul class="dropdown-menu">
+                        
+                          <li>
+                            <a class="dropdown-item" routerLink="/TV/popular"
+                              >Popular</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              routerLink="/TV/top_rated"
+                              >Top Rated</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" routerLink="/TV/airing_today"
+                              >Airing Today</a
+                            >
+                          </li>
+                          <li>
+                            <a class="dropdown-item" routerLink="/TV/on_the_air"
+                              >On The Air</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+    
+                      <li class="nav-item">
+                        <a
+                          class="nav-link   fs-5"
+                          aria-current="page"
+                          routerLink="/favorites" *ngIf="account_id" routerLinkActive="activee"
+                          >My Favorites</a
+                        >
+                      </li>
+    
+                      <li class="nav-item">
+                        <a
+                          class="nav-link   fs-5"
+                          aria-current="page"
+                          routerLink="/watchlist" *ngIf="account_id" routerLinkActive="activee"
+                          >My WatchList</a
+                        >
+                      </li>
+                    </ul>
+                    <a class="btn btn-danger" routerLink="/signup" *ngIf="!account_id">Sign Up</a>
+                    <a class="btn btn-dark mx-2" routerLink="/login" *ngIf="!account_id">Login</a>
+                    <a class="btn btn-danger" (click)="logout()" *ngIf="account_id">Logout</a>
+                  </div>
+                </div>
+              </nav>
+              <!-- ========== End Navigation bar Section ========== -->
+
+        <div id="home-content" class="d-flex justify-content-center align-items-center h-75 text-center text-white">
+          <div>
+            <h1 class="text-white" id="h1_first_section">Unlimited movies, TV shows, and more</h1>
+          <p class=" pt-4">Catch the Hottest Releases! Stay ahead of the curve with the latest trending movies.</p>
+          </div>
+        </div>
+      </div>
+
+      
+    </section>
+    <!-- ========== End First Section ( Hero Section ) ========== -->
+
+    <!-- ========== Start Now Playing Section ========== -->
+    <section class="mt-5 mx-5 text-white overflow-hidden">
+      <h2>Now Playing</h2>
+      <owl-carousel-o
+        [options]="customOptions"
+        class="container w-100 overflow-hidden"
+      >
+        <ng-container *ngFor="let slide of movieCategories['now_playing']">
+          <ng-template carouselSlide>
+            <img [src]="s + slide.poster_path" class="w-100 rounded-3" (click)="showMovie(slide.id)"/>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </section>
+    <!-- ========== End Now Playing Section ========== -->
+
+    <!-- ========== Start Trending Section ========== -->
+    <section class="mx-5 text-white overflow-hidden">
+      <h2>Trending</h2>
+      <owl-carousel-o
+        [options]="customOptions"
+        class="container overflow-hidden w-100"
+      >
+        <ng-container *ngFor="let slide of trending">
+          <ng-template carouselSlide>
+            <img [src]="s + slide.poster_path" class="w-100 rounded-3" (click)="showMovie(slide.id)"/>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </section>
+    <!-- ========== End Trending Section ========== -->
+
+    <!-- ========== Start Popular Section ========== -->
+    <section class="mx-5 text-white overflow-hidden">
+      <h2>Popular</h2>
+      <owl-carousel-o
+        [options]="customOptions"
+        class="container overflow-hidden w-100"
+      >
+        <ng-container *ngFor="let slide of movieCategories['popular']">
+          <ng-template carouselSlide>
+            <img [src]="s + slide.poster_path" class="w-100 rounded-3"  (click)="showMovie(slide.id)"/>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </section>
+    <!-- ========== End Popular Section ========== -->
+
+    <!-- ========== Start Top Rated Section ========== -->
+    <section class="mx-5 text-white overflow-hidden">
+      <h2>Top Rated</h2>
+      <owl-carousel-o
+        [options]="customOptions"
+        class="container overflow-hidden w-100"
+      >
+        <ng-container *ngFor="let slide of movieCategories['top_rated']">
+          <ng-template carouselSlide>
+            <img [src]="s + slide.poster_path" class="w-100 rounded-3" (click)="showMovie(slide.id)"/>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </section>
+    <!-- ========== End Top Rated Section ========== -->
+
+    <!-- ========== Start Upcoming Section ========== -->
+    <section class="mx-5 text-white overflow-hidden">
+      <h2>Upcoming</h2>
+      <owl-carousel-o
+        [options]="customOptions"
+        class="container overflow-hidden w-100"
+      >
+        <ng-container *ngFor="let slide of movieCategories['upcoming']">
+          <ng-template carouselSlide>
+            <img [src]="'https://image.tmdb.org/t/p/original' + slide.poster_path" class="w-100 rounded-3" (click)="showMovie(slide.id)"/>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </section>
+    <!-- ========== End Upcoming Section ========== -->
+
+
+        <!-- ========== Start Popular TV Lists Section ========== -->
+        <section class="mx-5 text-white overflow-hidden">
+          <h2>Popular TV Series</h2>
+          <owl-carousel-o
+            [options]="customOptions"
+            class="container overflow-hidden w-100"
+          >
+            <ng-container *ngFor="let slide of TVSreiesCategories['popular']">
+              <ng-template carouselSlide>
+                <img [src]="s + slide.poster_path" class="w-100 rounded-3" (click)="showSerie(slide.id)"/>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </section>
+        <!-- ========== End Popular TV Lists Section ========== -->
+
+
+
+                <!-- ========== Start Top Rated TV Lists Section ========== -->
+                <section class="mx-5 text-white overflow-hidden">
+                  <h2>Top Rated TV Series</h2>
+                  <owl-carousel-o
+                    [options]="customOptions"
+                    class="container overflow-hidden w-100"
+                  >
+                    <ng-container *ngFor="let slide of TVSreiesCategories['top_rated']">
+                      <ng-template carouselSlide>
+                        <img [src]="s + slide.poster_path" class="w-100 rounded-3" (click)="showSerie(slide.id)"/>
+                      </ng-template>
+                    </ng-container>
+                  </owl-carousel-o>
+                </section>
+                <!-- ========== End Top Rated TV Lists Section ========== -->
+
+
+    <script src="" async defer></script>
+  </body>
+</html>

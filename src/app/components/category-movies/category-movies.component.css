@@ -1,0 +1,80 @@
+row{
+  overflow: hidden;
+}
+.col-md-3 {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    top:-250%;
+    
+    background-color: #2d2d2dca;
+    width:93.7%;
+    height: 0%;
+    transition: 0.6s ease;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+
+
+  }
+  .form-control {
+    background-color: rgb(37, 36, 36);
+    border: none;
+  }
+  
+  .form-control::placeholder {
+    color: rgb(185, 181, 181);
+  }
+  
+  .form-control:focus {
+    border-color: #dc3545;
+    color:white;
+    box-shadow: 0 0 0 0.25rem #dc3545;
+    background-color: rgb(19, 19, 19);
+  }
+  
+  
+.col-md-3:hover .overlay{
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+}
+
+.row{
+  overflow: hidden;
+}
+
+#p1{
+  padding: 0.5rem 0px;
+}
+@media screen and (min-width: 500px) and (max-width: 980px) {
+
+  .overlay{
+    width:88%;
+   
+  }
+
+  .overlay h2{font-size: 12px;}
+  .overlay p{font-size: 8px;}
+  #p1{
+    padding:0px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .overlay{
+    width:95%;
+   
+  }
+}
+
+@media screen and (max-width: 300px){
+  .overlay{
+    width:92%;
+   
+  }
+}

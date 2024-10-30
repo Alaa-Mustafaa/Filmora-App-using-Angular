@@ -1,0 +1,15 @@
+nav{
+    box-shadow: 0 6px 20px 0 rgba(234, 225, 225, 0.19);
+
+}
+
+.nav-item a{
+    color:white
+}
+.nav-item .nav-link.activee{
+    color:#dc3545 ;
+}
+
+.dropdown-item{
+    color: black !important;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+<app-nav></app-nav>
+
+        <!-- ========== Start Section ========== -->
+        
+        
+     <section id="login_section">
+        <div id="layer">
+            <div class="d-flex justify-content-center align-items-center h-100 ">
+                <div class=" rounded-3 p-5" id="l">
+                    <h3 class="text-white py-2">Login</h3>
+                    <p class="text-secondary">Welcome back !</p>
+                    <form [formGroup]="LoginForm" (ngSubmit)="login(LoginForm)" >
+
+                      <div class="mb-4">
+                        <input type="email" required class="form-control p-3" placeholder="Enter your email" formControlName="email"/>
+                      </div>
+
+                      <div class="mb-4">
+                        <input type="password" required class="form-control p-3" placeholder="Enter your password" formControlName="password"/>
+                      </div>
+
+                      <button class="btn btn-danger mt-4">Login</button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+     </section>
+             <!-- ========== End Section ========== -->
+
+
+        <script src="" async defer></script>
+    </body>
+</html>

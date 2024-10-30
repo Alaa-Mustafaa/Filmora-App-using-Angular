@@ -1,0 +1,47 @@
+#first_section{
+    background-image: url('../../../assets/home.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}
+
+#home-layer{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+
+}
+
+.dropdown-item{
+    color: black !important;
+}
+
+#h1_first_section{
+    font-size: 65px;
+}
+
+#home-content p{
+    font-size: 25px;
+
+}
+img{
+    cursor: pointer;
+}
+.nav-item a{
+    color:white
+}
+.nav-item .nav-link.activee{
+    color:#dc3545 ;
+}
+@media screen and (max-width:600px){
+    #h1_first_section{
+        font-size: 35px;
+    }
+    #home-content p{
+        font-size: 15px;
+    
+    }
+
+    #home-content{padding: 2%;}
+}

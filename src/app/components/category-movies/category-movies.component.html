@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <app-nav></app-nav>
+    <section class="container my-5">
+      <!-- Search -->
+      <p class="text-center text-danger">Enter the name of the movie</p>
+      <div class="d-flex justify-content-center align-items-center my-4">
+          <input type="search" class="form-control w-50 "  [(ngModel)]="searchValue"/>
+          <button class="btn btn-danger ms-2 " (click)="search(searchValue)">Search </button>
+      </div>
+      <!-- End of Search -->
+
+   
+    
+    <div class="row gy-5" *ngIf="!searched">
+      <h2 class="text-center text-white py-3 text-uppercase">
+        {{ formatString( category )}} Movies
+      </h2>
+        <div class="col-md-3" *ngFor="let movie of movies" (click)="showMovie(movie.id)">
+            <img [src]="path + movie.poster_path" class="w-100 rounded-3" id="image"/>
+            <div class="overlay d-flex justify-content-center align-items-center text-white pt-4">
+              <div class="ps-2">
+                <h2>{{movie.original_title}}</h2> 
+                <p id="p1">{{movie.release_date}}</p>
+                <p class="text-justify">{{movie.overview}}</p>
+                <div *ngFor="let star of get(movie.vote_average)" class="d-inline pb-5">
+                    <i class="fa-solid fa-star text-warning mx-1"></i>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="searched">
+      <div class="col-md-3"  (click)="showMovie(movie.id)">
+        <img [src]="path + movie.poster_path" class="w-100 rounded-3" id="image"/>
+        <div class="overlay d-flex justify-content-center align-items-center text-white pt-4">
+          <div class="ps-2">
+            <h2>{{movie.original_title}}</h2> 
+            <p id="p1">{{movie.release_date}}</p>
+            <p class="text-justify">{{movie.overview}}</p>
+            <div *ngFor="let star of get(movie.vote_average)" class="d-inline pb-5">
+                <i class="fa-solid fa-star text-warning mx-1"></i>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    </div>
+    </section>
+
+    <script src="" async defer></script>
+  </body>
+</html>
