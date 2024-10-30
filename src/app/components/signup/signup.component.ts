@@ -34,7 +34,7 @@ CreateRequestToken(){
    this.request=res.request_token;
    localStorage.setItem('request',this.request)
    console.log(localStorage.getItem('request'))
-   window.location.href=`https://www.themoviedb.org/authenticate/${this.request}?redirect_to=http://localhost:4200/login`
+   window.location.href=`https://www.themoviedb.org/authenticate/${this.request}?redirect_to=https://movie-app-de9z-esy4jtjli-alaa-mostafaas-projects.vercel.app/login`
 
 
   })
