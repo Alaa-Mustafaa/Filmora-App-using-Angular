@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 export const userGuard: CanActivateFn = (route, state) => {
   let _Router = inject(Router)
-if(localStorage.getItem('account_id')){
+if(localStorage.getItem('user_id')){
   return true;
 }else{
   Swal.fire({

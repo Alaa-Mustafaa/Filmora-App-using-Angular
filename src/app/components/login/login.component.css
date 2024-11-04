@@ -14,6 +14,8 @@
   .form-control {
     background-color: rgb(19, 19, 19);
     border: none;
+    color: #e0d5d5;
+
   }
   
   .form-control::placeholder {

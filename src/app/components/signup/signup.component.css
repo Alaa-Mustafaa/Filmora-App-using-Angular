@@ -14,11 +14,14 @@
 .form-control {
   background-color: rgb(19, 19, 19);
   border: none;
+  color: #e0d5d5;
 }
 
 .form-control::placeholder {
   color: rgb(185, 181, 181);
 }
+
+
 
 .form-control:focus {
   border-color: #dc3545;

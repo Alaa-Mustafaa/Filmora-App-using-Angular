@@ -1,7 +1,7 @@
 import { Component , OnInit} from '@angular/core';
-import { DataService } from '../../services/data.service';
 import { OneMovie } from 'src/app/interfaces/one-movie';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 
@@ -11,28 +11,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./watch-list.component.css']
 })
 export class WatchListComponent implements OnInit{
-  account_id! :any;
-  movies:OneMovie[]=[];
+
+  watchlist:OneMovie[]=[];
+  mywatchlist:OneMovie[]=[];
+  userId:any;
+
   path:string="https://image.tmdb.org/t/p/original"
-  constructor(private _DataService:DataService , private _Router:Router){
+  constructor( private _Router:Router){
 
   }
 
   ngOnInit(): void {
-    this.account_id=localStorage.getItem('account_id')
-    console.log(this.account_id)
-    this.GetAllWatchListMovies()
+    this.userId=localStorage.getItem('user_id');
+
+    this.watchlist=JSON.parse(localStorage.getItem('watchList')!);
+    console.log(this.watchlist)
+    this.getMyWatchlistMovies()
+    this.mywatchlist=JSON.parse(localStorage.getItem('mywatchlist')!);
+    console.log(this.mywatchlist)
+
 
   }
+  getMyWatchlistMovies(){
+    for(let movie of this.watchlist){
+      if(movie.user_id === this.userId){
+        this.mywatchlist.push(movie)
+      }
+    }
 
-  GetAllWatchListMovies(){
-    return this._DataService.GetAllWatchListMovies(this.account_id).subscribe({
-      next:(res)=>{
-        this.movies=res.results
-        console.log(this.movies)
-      },
-      error:(err)=>{console.log(err)}
-    })
+    localStorage.setItem('mywatchlist',JSON.stringify(this.mywatchlist))
+
   }
 
   // Get the stars of the film
@@ -45,5 +53,23 @@ get(x:any){
 
 showMovie(x:number){
   this._Router.navigate([`/oneMovie/${x}`])
+}
+
+DeleteFromWatchList(id:number){
+  let movieId=this.mywatchlist.findIndex((movie)=> movie.id === id);
+  let movieId2=this.watchlist.findIndex((movie)=> movie.id === id);
+
+  this.mywatchlist.splice(movieId,1)
+  this.watchlist.splice(movieId2,1)
+
+  localStorage.setItem('mywatchlist',JSON.stringify(this.mywatchlist))
+  localStorage.setItem('watchList',JSON.stringify(this.watchlist))
+
+  Swal.fire({
+    title: 'Success',
+    text: 'Movie is deleted successfully from your Watchlist!',
+    icon: 'success',
+    confirmButtonText: 'Ok'
+  })
 }
 }

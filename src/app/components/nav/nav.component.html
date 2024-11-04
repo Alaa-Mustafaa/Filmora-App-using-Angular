@@ -121,7 +121,7 @@
                     <a
                       class="nav-link   fs-5"
                       aria-current="page"
-                      routerLink="/favorites" *ngIf="account_id" routerLinkActive="activee"
+                      routerLink="/favorites" *ngIf="user_id" routerLinkActive="activee"
                       >My Favorites</a
                     >
                   </li>
@@ -130,14 +130,16 @@
                     <a
                       class="nav-link   fs-5"
                       aria-current="page"
-                      routerLink="/watchlist" *ngIf="account_id" routerLinkActive="activee"
+                      routerLink="/watchlist" *ngIf="user_id" routerLinkActive="activee"
                       >My WatchList</a
                     >
                   </li>
                 </ul>
-                <a class="btn btn-danger" routerLink="/signup" *ngIf="!account_id">Sign Up</a>
-                <a class="btn btn-dark mx-2" routerLink="/login" *ngIf="!account_id">Login</a>
-                <a class="btn btn-danger" (click)="logout()" *ngIf="account_id">Logout</a>
+                <a class="btn btn-danger" routerLink="/signup" *ngIf="!user_id">Sign Up</a>
+                <a class="btn btn-dark mx-2" routerLink="/login" *ngIf="!user_id">Login</a>
+                <a class="btn btn-danger me-3" (click)="logout()" *ngIf="user_id">Logout</a>
+                <a routerLink="/account" *ngIf="user_id" routerLinkActive="p-2 rounded-5 bg-secondary" class="text-white"><i class="fa-regular fa-user fs-5 " ></i></a>
+
               </div>
             </div>
           </nav>

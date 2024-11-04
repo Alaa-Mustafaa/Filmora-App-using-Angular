@@ -7,7 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule } from '@angular/common/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryMoviesComponent } from './components/category-movies/category-movies.component';
@@ -20,8 +20,12 @@ import { WatchListComponent } from './components/watch-list/watch-list.component
 import { TVComponent } from './components/tv/tv.component';
 import { ShowOneSerieComponent } from './components/show-one-serie/show-one-serie.component';
 import { SearchComponent } from './components/search/search.component';
+import { AccountComponent } from './components/account/account.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 
+
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
@@ -38,8 +42,11 @@ import { SearchComponent } from './components/search/search.component';
     WatchListComponent,
     TVComponent,
     ShowOneSerieComponent,
-    SearchComponent
+    SearchComponent,
+    AccountComponent,
+    NotfoundComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     AppRoutingModule,

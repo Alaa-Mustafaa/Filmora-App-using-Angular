@@ -20,25 +20,40 @@
                 <div class=" rounded-3 p-5" id="l">
                     <h3 class="text-white py-2">Login</h3>
                     <p class="text-secondary">Welcome back !</p>
+                    <!-- Email error message -->
+                    <div class="bg-danger p-2 my-3 text-white" *ngIf="EmailError"><i class="fa-regular pe-2 fa-circle-xmark"></i> Email not found.Please register first.</div>
+                   <!-- End of Email error message -->
+
+                    <!-- password error message -->
+                    <div class="bg-danger p-2 my-3 text-white" *ngIf="passwordError"><i class="fa-regular pe-2 fa-circle-xmark"></i> Password is not correct.</div>
+                   <!-- End of password error message -->                    
+
+                    <!-- Form -->
                     <form [formGroup]="LoginForm" (ngSubmit)="login(LoginForm)" >
 
                       <div class="mb-4">
                         <input type="email" required class="form-control p-3" placeholder="Enter your email" formControlName="email"/>
+                        <div class="text-danger pt-3" *ngIf="LoginForm.get('email')?.errors&&LoginForm.get('email')?.touched">
+                          <p *ngIf="LoginForm.get('email')?.getError('required')">Required Field</p>
+                          <p *ngIf="LoginForm.get('email')?.getError('email')">Email is invalid </p>
+                        </div>
                       </div>
 
                       <div class="mb-4">
                         <input type="password" required class="form-control p-3" placeholder="Enter your password" formControlName="password"/>
+                        <div class="text-danger pt-3" *ngIf="LoginForm.get('password')?.errors&&LoginForm.get('password')?.touched">
+                          <p *ngIf="LoginForm.get('password')?.getError('required')">Required Field</p>
+                          <p *ngIf="LoginForm.get('password')?.getError('minlength')">Min Length is 4</p>
+                        </div>
                       </div>
 
-                      <button class="btn btn-danger mt-4">Login</button>
+                      <button class="btn btn-danger mt-4" [disabled]="LoginForm.invalid">Login</button>
 
                     </form>
+                <!-- End of Form -->
                 </div>
-
             </div>
-
         </div>
-
      </section>
              <!-- ========== End Section ========== -->
 

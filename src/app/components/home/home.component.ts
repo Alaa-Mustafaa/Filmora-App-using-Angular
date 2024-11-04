@@ -13,7 +13,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  account_id:any;
+  user_id:any;
 
   trending:Movie[]=[]
  
@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit{
   constructor(private _DataService:DataService , private _Router:Router){}
 
   ngOnInit(): void {
-    this.account_id=localStorage.getItem('account_id')
-    console.log(localStorage.getItem('account_id'))
+    this.user_id=localStorage.getItem('user_id')
+    console.log(localStorage.getItem('user_id'))
     // Movies
     this.getMovies('popular')
     this.getMovies('upcoming')
@@ -92,7 +92,7 @@ getTVSeries(category: string) {
 // Logout
 
 logout(){
-  localStorage.removeItem('account_id')
+  localStorage.removeItem('user_id')
   this._Router.navigate(['/login'])
 }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -7,18 +7,20 @@ import { Router } from '@angular/router';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent {
-  account_id:any;
+export class NavComponent implements OnInit{
+  user_id:any;
 
-  constructor(private _Router:Router){
-    this.account_id=localStorage.getItem('account_id')
+  constructor(private _Router:Router){}
 
+  ngOnInit():void{
+    this.user_id=localStorage.getItem('user_id')
+    console.log(this.user_id)
   }
 
 // Logout
 
 logout(){
-  localStorage.removeItem('account_id')
+  localStorage.removeItem('user_id')
   this._Router.navigate(['/login'])
 }
 }

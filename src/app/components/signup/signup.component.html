@@ -20,20 +20,34 @@
                 <div class=" rounded-3 p-5" id="l">
                     <h3 class="text-white py-2">Sign Up</h3>
                     <p class="text-secondary">Join us to be part of our family</p>
+                    <p class="text-danger fs-4" *ngIf="SignUpError">Account already exists.Please log in.</p>
                     <form [formGroup]="SignUpForm" (ngSubmit)="SignUp(SignUpForm)">
                         <div class="my-4">
                             <input type="text" required class="form-control p-3" placeholder="Enter your name " formControlName="name"/>
+                            <div class="text-danger pt-3" *ngIf="SignUpForm.get('name')?.errors&&SignUpForm.get('name')?.touched">
+                                <p *ngIf="SignUpForm.get('name')?.getError('required')">Required Field</p>
+                                <p *ngIf="SignUpForm.get('name')?.getError('maxlength')">Max Length is 15 </p>
+                                <p *ngIf="SignUpForm.get('name')?.getError('minlength')">Min Length is 3</p>
+                  
+                              </div>
                           </div>
 
                       <div class="mb-4">
                         <input type="email" required class="form-control p-3" placeholder="Enter your email" formControlName="email"/>
+                        <div class="text-danger pt-3" *ngIf="SignUpForm.get('email')?.errors&&SignUpForm.get('email')?.touched">
+                            <p *ngIf="SignUpForm.get('email')?.getError('required')">Required Field</p>
+                            <p *ngIf="SignUpForm.get('email')?.getError('email')">Email is invalid </p>
+                          </div>
                       </div>
 
                       <div class="mb-4">
                         <input type="password" required class="form-control p-3" placeholder="Enter your password" formControlName="password"/>
+                        <div class="text-danger pt-3" *ngIf="SignUpForm.get('password')?.errors&&SignUpForm.get('password')?.touched">
+                            <p *ngIf="SignUpForm.get('password')?.getError('required')">Required Field</p>
+                            <p *ngIf="SignUpForm.get('password')?.getError('minlength')">Min Length is 4</p>
+                          </div>
                       </div>
-
-                      <button class="btn btn-danger mt-4">Sign Up</button>
+                      <button class="btn btn-danger mt-4" [disabled]="SignUpForm.invalid">Sign Up</button>
 
                     </form>
                 </div>

@@ -67,47 +67,6 @@ export class DataService {
     );
   }
 
-  // Add to favorite
-  AddFavorite(account_id: number,movieId:number): Observable<any> {
-    return this._HttpClient.post(
-      `https://api.themoviedb.org/3/account/${account_id}/favorite`,
-      {
-        media_type: 'movie',
-        media_id: movieId,
-        favorite: true,
-      },
-      this.options
-    );
-  }
-
-  // Add to WatchList
-  AddWatchList(account_id: number,movieId:number): Observable<any> {
-    return this._HttpClient.post(
-      `https://api.themoviedb.org/3/account/${account_id}/watchlist`,
-      {
-        media_type: 'movie',
-        media_id: movieId,
-        watchlist: true,
-      },
-      this.options
-    );
-  }
-
-  // Get All Favorite movies
-  GetAllFavoriteMovies(account_id: number): Observable<any>
-  {
-    return this._HttpClient.get(`https://api.themoviedb.org/3/account/${account_id}/favorite/movies`,this.options)
-
-  }
-
-
-    // Get All WatchList movies
-    GetAllWatchListMovies(account_id: number): Observable<any>
-    {
-      return this._HttpClient.get(`https://api.themoviedb.org/3/account/${account_id}/watchlist/movies`,this.options)
-  
-    }
-
 
 
 

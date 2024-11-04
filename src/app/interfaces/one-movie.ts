@@ -44,5 +44,6 @@ export interface OneMovie {
         video: boolean;
         vote_average: number;
         vote_count: number;
+        user_id:string;
       }
     

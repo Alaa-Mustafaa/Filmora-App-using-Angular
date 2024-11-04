@@ -32,11 +32,11 @@
                             <span class="badge text-bg-secondary  m-2">{{genre.name}}</span>
                         </span>
                     </div>
-                    <a class="btn btn-danger mt-4 " title="Add to favorite" (click)="addToFavorite(movie.id)"><i class="fa-solid fa-heart"></i></a>
+                    <a class="btn btn-danger mt-4 " title="Add to favorite" (click)="addToFavorite(movie)"><i class="fa-solid fa-heart"></i></a>
                     <a [href]="movie.homepage" class="btn btn-dark mt-4 mx-2" target="_blank"><i class="fa-regular fa-circle-play me-2"></i> Watch now</a>
 
                     
-                    <a class="btn btn-dark mt-4" (click)="addToWatchList(movie.id)"><i class="fa-solid fa-list me-2"></i> Add To WatchList</a>
+                    <a class="btn btn-dark mt-4" (click)="addToWatchList(movie)"><i class="fa-solid fa-list me-2"></i> Add To WatchList</a>
 
                   </div>
     
@@ -56,6 +56,7 @@
 
         
         <!-- ========== End ( Show One Movie ) Section ========== -->
+
       </div>
         <script src="" async defer></script>
     </body>
