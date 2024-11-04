@@ -1,8 +1,11 @@
 import { Component ,OnInit} from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { OneMovie } from 'src/app/interfaces/one-movie';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute ,NavigationEnd,Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import * as AOS from 'aos';
+
+
 
 @Component({
   selector: 'app-show-one-movie',
@@ -18,9 +21,15 @@ export class ShowOneMovieComponent implements OnInit{
   watchList:OneMovie[]=[];
   user_id:any;
 
-  constructor(private _DataService:DataService,private _ActivatedRoute:ActivatedRoute){}
+  constructor(private _DataService:DataService,private _ActivatedRoute:ActivatedRoute,private router:Router){}
 
   ngOnInit(): void {
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        AOS.refresh();
+      }
+    });
  this.Favorites=JSON.parse(localStorage.getItem('FavoritesFilms')!);
  this.watchList=JSON.parse(localStorage.getItem('watchList')!);
  this.user_id=localStorage.getItem('user_id')
